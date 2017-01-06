@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estimate:"
+        android:textSize="20dp"
+        android:layout_marginLeft="8dp"
+        android:textColor="#000000"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$ 20"
+        android:textSize="18dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/cart_total_price"
+        android:textStyle="normal|bold"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:text="* Note: This amount is an estimate only and final quote will depend on actual analog media submitted."
+        android:textSize="14dp"
+        android:textColor="#333333"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:text="You will have a chance to review your quote once we receive your materials and either approve the quote for us to proceed or deny and request we send everything back."
+        android:textSize="14dp"
+        android:textColor="#333333"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CHECKOUT"
+        android:textColor="#ffffff"
+        android:background="@drawable/button_border"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/cart_checkout_button"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
+
+</LinearLayout>

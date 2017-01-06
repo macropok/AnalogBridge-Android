@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32px"
+                android:textAlignment="center"
+                android:textSize="32sp"
+                android:text="Features"
+                android:textColor="#000000"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_camera_enhance_black_24dp"
+                    android:scaleType="centerInside"
+                    android:id="@+id/camera_image"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Archival Quality"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/camera_image"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:id="@+id/camera_text"
+                    />
+
+                <TextView
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/camera_text"
+                    android:text="Our philosophy of 'Do it once, do it right' ensures your memories are scanned according to archival best practices by specially trained archivists on archive-grade equipment"
+                    android:textAlignment="center"
+                    android:textColor="#111111"
+                    android:layout_marginTop="16dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_timeline_black_24dp"
+                    android:scaleType="centerInside"
+                    android:id="@+id/time_image"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time-Stamping Technology"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/time_image"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:id="@+id/time_text"
+                    />
+
+                <TextView
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/time_text"
+                    android:text="Our magic applied to your memories will ensure your newly digitized memories show up in the correct portion of your timeline, not 2017"
+                    android:textAlignment="center"
+                    android:textColor="#111111"
+                    android:layout_marginTop="16dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_restore_black_24dp"
+                    android:scaleType="centerInside"
+                    android:id="@+id/restore_image"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Remastered Restoration"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/restore_image"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:id="@+id/restore_text"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_below="@+id/restore_text"
+                    android:text="We set the bar for quality and apply our industry-leading remastering process to enhance and restore faded, dusty images into pristine memories every single time"
+                    android:textAlignment="center"
+                    android:textColor="#111111"
+                    android:layout_marginTop="16dp"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_track_changes_black_24dp"
+                    android:scaleType="centerInside"
+                    android:id="@+id/track_image"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="24/7 Tracking"
+                    android:textAlignment="center"
+                    android:layout_below="@+id/track_image"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:id="@+id/track_text"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_below="@+id/track_text"
+                    android:text="We value the importance of every memory and enable you to track the status of your order every step of the way"
+                    android:textAlignment="center"
+                    android:textColor="#111111"
+                    android:layout_marginTop="16dp"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

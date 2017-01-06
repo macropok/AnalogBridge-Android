@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"
+        android:id="@+id/cart_image"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        />
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_remove_shopping_cart_black_24dp"
+        android:background="@drawable/edit_text_border"
+        android:id="@+id/cart_remove_button"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_image"
+        android:text="Product title"
+        android:textSize="18dp"
+        android:textColor="#000000"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/cart_product_title"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_product_title"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="$20"
+        android:textSize="16dp"
+        android:id="@+id/cart_product_price"
+        android:textColor="#333333"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cart_product_price"
+        android:id="@+id/cart_qty_group"
+        >
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            />
+        <!--
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="16dp"
+                    android:id="@+id/cart_minus_button"
+                    android:layout_weight="0.1"
+                    android:background="#ffffff"
+                    android:textColor="#000000"
+                    />
+-->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.02"
+                    />
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/edit_text_border"
+                    android:padding="6dp"
+                    android:id="@+id/cart_qty"
+                    android:textColor="#000000"
+                    android:textAlignment="center" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.02"
+                    />
+        <!--
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="16dp"
+                    android:id="@+id/cart_plus_button"
+                    android:layout_weight="0.1"
+                    android:background="#ffffff"
+                    android:textColor="#000000"
+                    />
+        -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/cart_qty_group"
+        android:layout_marginTop="8dp"
+        android:background="#000000"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shopping Cart"
+        android:layout_marginTop="32px"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:id="@+id/cart_title"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Currently Items in cart"
+        android:paddingLeft="8dp"
+        android:layout_below="@+id/cart_title"
+        android:id="@+id/cart_count"
+        android:layout_marginTop="16dp"
+        android:textColor="#333333"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cart_count"
+        android:layout_marginTop="16px"
+        android:id="@+id/cart_list"
+        />
+
+</RelativeLayout>

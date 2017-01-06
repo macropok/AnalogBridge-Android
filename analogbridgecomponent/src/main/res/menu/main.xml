@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/order_history"
+        android:title="Order History"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_action_item_badge"
+        />
+    <item
+        android:id="@+id/shopping_cart"
+        android:title="Shopping Cart"
+        android:icon="@drawable/ic_shopping_basket_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        app:actionLayout="@layout/menu_action_item_badge"
+        />
+    <item
+        android:id="@+id/exit_app"
+        android:title="Exit"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        />
+</menu>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item android:title="FORMATS">
+        <menu>
+            <item
+                android:id="@+id/photos"
+                android:title="PHOTOS / SLIDES / NEGATIVES" />
+            <item
+                android:id="@+id/images"
+                android:title="8MM / SUPER8 / 16MM" />
+            <item
+                android:id="@+id/films"
+                android:title="BETAMAX / VHS / HI-8 / MINIDV" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/how_it_works"
+        android:title="HOW IT WORKS" />
+    <item
+        android:id="@+id/features"
+        android:title="FEATURES" />
+    <item
+        android:id="@+id/faqs"
+        android:title="FAQ'S" />
+    <item
+        android:id="@+id/sendbox"
+        android:title="SEND BOX" />
+</menu>
