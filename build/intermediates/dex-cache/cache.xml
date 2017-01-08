@@ -12,39 +12,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.1_e9a823c45abed31c32eac12a572bfb6ff96f593c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
         <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.1_560dad404a223377d1eee01354f55b6cfb243e2d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f83b00041ecfba705603fec40363416c7de69719">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_d4e11a51758fced800c4b8f4a459fc0bdbfc9265/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.1_fed7c78cbd911a5b4a438e08046d6656b89ad2f3/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -66,21 +39,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/psihpok/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_759fde358c41250f7512a45b1c5c76ffa59769af/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.8.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="9f910ce4152cf5b205ee2630dc2e12d2803e1e63">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-iconics-core-2.8.1_aff30dd64aa9de5c2894ad32df7833570a3b9a2d/classes.dex" />
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.1_f06a80d9b893a005fe5e5d8ca94895356c720985/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -102,12 +66,237 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.1_1e11e734c56827ded17e89f88f31da1540efd730/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.stripe/stripe-android/2.0.2/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fd2d3bfea24a25023d1e3b04fb3218120cc067f4">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.stripe-stripe-android-2.0.2_e178c3932997163bede3c7e8a1b31f28990b74bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
         <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.1_ca01aed0f3e7dcc9d85bd14371beb2436ec59365/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.1_f4078b24bbf910cc1190374776b6f907be5a35df/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4bb5be0b1a4e24dbfc22a984d35a56d0e97bb94e">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0bad4ea373832326ed827f5a6028323f53a9cd42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.1_43369c24bb24f6d14c71662591f5528164268790/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/android-async-http-1.4.9_3060d8cb140516e7f3d568344b1fead09529e4ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_090619cbbf53afb5dd5f5d00fbff9ee6de6a8689/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.mikepenz/actionitembadge/3.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="41f6c67ba35cee00eedb662516ac7a30e2fcf6cc">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-actionitembadge-3.3.1_390b36d0a24cbf20d6c47819edb518c702f9983e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.1_f6257e2b9e66ff815073c87061d904ce8236458c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_d204c0bcdde2f0d5fe75a61c7286496e41d0d315/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_bc2dfa947f3c848eca3440bc1269097356735866/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.mikepenz/actionitembadge/3.3.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="41f6c67ba35cee00eedb662516ac7a30e2fcf6cc">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-actionitembadge-3.3.1_b09da385a74c6614faf5da7c8ad1bc42498b2c46/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.1_e7534096a31ae2b746ae7a7f95b2b84b11d97b59/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.1_1ada0a4b1084bb1a717d7bcd4f55d07f5ce6d61a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_8a7fccf907fb579430b8567892adb54f231d2d04/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.1_e9a823c45abed31c32eac12a572bfb6ff96f593c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_d4e11a51758fced800c4b8f4a459fc0bdbfc9265/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.1_fed7c78cbd911a5b4a438e08046d6656b89ad2f3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_c25f5702f857e89ffd40312ecb6ae29a49ff9352/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_759fde358c41250f7512a45b1c5c76ffa59769af/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.8.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="9f910ce4152cf5b205ee2630dc2e12d2803e1e63">
+        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-iconics-core-2.8.1_aff30dd64aa9de5c2894ad32df7833570a3b9a2d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.1_db1ce31c0895f4487729146a7e651340660066c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_2ad58ed6ed220d7199893bc664b407e49e397c6a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="52743953bc51b273a81ed6189852075681a2853c">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_e4837dd2f6bd8cb67cc87061de6371f77b364379/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/transition/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.0.1_750d2ef767baf53a27c5c8104e1f137221d0e20d/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -129,12 +318,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.0.1/jars/classes.jar"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.0.1_f4078b24bbf910cc1190374776b6f907be5a35df/classes.dex" />
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_c30a5f7ee1c62b31036b064792ea23367562a7f2/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -144,24 +333,6 @@
         revision="25.0.1"
         sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
         <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/httpclient-4.3.6_b3da828d5e8afc6f5de5725ff9508dfd075b6a0c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/psihpok/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/android-async-http-1.4.9_3060d8cb140516e7f3d568344b1fead09529e4ba/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_090619cbbf53afb5dd5f5d00fbff9ee6de6a8689/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -192,6 +363,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.8.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="9f910ce4152cf5b205ee2630dc2e12d2803e1e63">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-iconics-core-2.8.1_5bada81c036884e8b4e63b3614bf11fce2cc7fb0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.mikepenz/fontawesome-typeface/4.7.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -201,12 +381,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.mikepenz/actionitembadge/3.3.1/jars/classes.jar"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/design/25.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="41f6c67ba35cee00eedb662516ac7a30e2fcf6cc">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-actionitembadge-3.3.1_b09da385a74c6614faf5da7c8ad1bc42498b2c46/classes.dex" />
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.0.1_ee7882676aaf4709f734f5f7c63e15345c191d22/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.1_b749b90bffa5f90a620a3dc316ca58b30d066174/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -219,12 +408,30 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="/Users/psihpok/Desktop/AnalogBridge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_8a7fccf907fb579430b8567892adb54f231d2d04/classes.dex" />
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_e88c90d7aae18bca39406aaa41766f2a98124a56/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_c0d33dc6a5065584a6389e09502c6292c4ee7dd1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.0.1_7962f8af27d6227b7121b44c0c0f76cb16ddc45d/classes.dex" />
     </item>
 
 </items>

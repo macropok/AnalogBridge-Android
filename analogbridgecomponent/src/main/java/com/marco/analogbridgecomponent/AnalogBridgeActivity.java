@@ -25,7 +25,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mikepenz.actionitembadge.library.ActionItemBadge;
-import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 
 public class AnalogBridgeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
@@ -37,6 +36,9 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
         FEATURES,
         FAQS,
         CART,
+        CHECK_OUT,
+        ORDER_SUCCESS,
+        ORDER_HISTORY,
         EXIT
     }
 
@@ -110,7 +112,7 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
 
         if (id == R.id.order_history) {
-
+            showScreen(SCREEN.ORDER_HISTORY);
         }
         else if (id == R.id.shopping_cart) {
             showScreen(SCREEN.CART);
@@ -183,6 +185,15 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
                 break;
             case CART:
                 fragment = new CartFragment();
+                break;
+            case CHECK_OUT:
+                fragment = new CheckoutFragment();
+                break;
+            case ORDER_SUCCESS:
+                fragment = new OrderSuccessFragment();
+                break;
+            case ORDER_HISTORY:
+                fragment = new OrderHistoryFragment();
                 break;
             case EXIT:
                 Intent i = new Intent();

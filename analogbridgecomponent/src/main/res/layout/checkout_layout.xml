@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Checkout"
+        android:layout_marginTop="32px"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        android:id="@+id/format_title"
+        android:textColor="#000000"
+        android:padding="8dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="8dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shipping Address"
+                android:textSize="24dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="First Name"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/first_name"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Last Name"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/last_name"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Email"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/email"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Phone Number"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/phone_number"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="phone" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Address1"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/address1"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Address2"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/address2"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Company"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/company"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="City"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/city"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/state"
+                android:textSize="18dp"
+                android:background="#67C2DC"
+                >
+            </Spinner>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Zip Code"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/zip_code"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                />
+
+            <EditText
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:minLines="6"
+                android:gravity="top|left"
+                android:maxLines="10"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="8dp"
+                android:textSize="18dp"
+                android:hint="Custom Instructions"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/custom_instruction"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Partial Payment"
+                android:textSize="24dp"
+                android:layout_marginTop="32dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="$ 20"
+                android:textSize="20dp"
+                android:layout_marginTop="16dp"
+                android:textColor="#000000"
+                android:id="@+id/partial_payment"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:text="* Note: This amount covers costs for three-way shipping to the address provided. If you approve the quote after we receive your media, this amount will be applied towards your order total. This amount is non-refundable."
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:text="Card Number *"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="18dp"
+                android:hint="•••• •••• •••• ••••"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/card_number"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:text="Billing Zip *"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/billing_zip"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:text="Expiration Date *"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="18dp"
+                android:hint="•• / ••"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/expiration_date"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:text="CVC *"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textSize="18dp"
+                android:hint="•••"
+                android:textColor="#000000"
+                android:textColorHint="#888888"
+                android:id="@+id/cvc"
+                android:padding="4dp"
+                android:background="@drawable/edit_text_border"
+                android:inputType="number" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_border"
+                android:text="SUBMIT ORDER"
+                android:textColor="#ffffff"
+                android:id="@+id/submit_order"
+                android:layout_marginBottom="32dp"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

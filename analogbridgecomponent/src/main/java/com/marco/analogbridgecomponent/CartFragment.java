@@ -138,10 +138,9 @@ public class CartFragment extends Fragment {
                 checkOut.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        AnalogBridgeActivity.currentActivity.showScreen(AnalogBridgeActivity.SCREEN.CHECK_OUT);
                     }
                 });
-
             }
             else {
                 rowView = mInflater.inflate(R.layout.cart_cell_layout, parent, false);

@@ -1,12 +1,18 @@
 package com.marco.analogbridgecomponent;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.loopj.android.http.*;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.stripe.android.Stripe;
+import com.stripe.android.TokenCallback;
+import com.stripe.android.exception.AuthenticationException;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +41,11 @@ public class APIService {
     public JSONObject estimateBox = null;
     public JSONArray faqs = null;
 
+    public JSONObject customer = null;
+    public JSONObject order = null;
+
+    public Stripe stripe = null;
+
     public APIService() {
         client.setTimeout(TIME_OUT);
         client.setConnectTimeout(TIME_OUT);
@@ -61,7 +72,24 @@ public class APIService {
                     if (statusCode == 200) {
                         publicKey = key;
                         customerToken = token;
-                        handler.completion(true, responseString);
+                        getCustomer(new CompletionHandler(){
+                            @Override
+                            public void completion(boolean bSuccess, String message) {
+                                if (bSuccess == true) {
+
+                                    try {
+                                        stripe = new Stripe(publicKey);
+                                        handler.completion(true, null);
+                                    } catch (AuthenticationException e) {
+                                        e.printStackTrace();
+                                        handler.completion(false, e.toString());
+                                    }
+                                }
+                                else {
+                                    handler.completion(false, message);
+                                }
+                            }
+                        });
                     }
                     else {
                         handler.completion(false, responseString);
@@ -137,6 +165,185 @@ public class APIService {
                 handler.completion(false, responseString);
             }
         });
+    }
+
+    public void getCustomer(final CompletionHandler handler) {
+        if (customer != null) {
+            handler.completion(true, null);
+            return;
+        }
+
+        String url = getApiURL("customer");
+        RequestParams params = new RequestParams();
+        params.add("publicKey", publicKey);
+        params.add("customerToken", customerToken);
+
+        getRequest(url, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                customer = response;
+                handler.completion(true, null);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                customer = null;
+                handler.completion(false, errorResponse.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                customer = null;
+                handler.completion(false, responseString);
+            }
+        });
+    }
+
+    public void submitOrder(final Card card, final CompletionHandler handler) {
+        if (card == null || stripe == null) {
+            handler.completion(false, "Payment not defined yet.");
+            return;
+        }
+
+        stripe.createToken(card, new TokenCallback() {
+            @Override
+            public void onError(Exception error) {
+                handler.completion(false, error.toString());
+            }
+
+            @Override
+            public void onSuccess(final Token token) {
+                JSONObject auth = new JSONObject();
+                try {
+                    auth.put("publicKey", publicKey);
+                    JSONObject tokenObj = getTokenJson(token);
+                    auth.put("card", tokenObj);
+                    auth.put("customer", customer);
+                    JSONObject estimate = getEstimateJson();
+                    if (estimate == null) {
+                        handler.completion(false, "Products Information Error.");
+                        return;
+                    }
+
+                    auth.put("estimate", estimate);
+
+                    String url = getApiURL("customer/orders");
+                    postRequest(url, auth, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                            try {
+
+                                String status = response.getString("status");
+                                String message = response.getString("message");
+
+                                if (status.compareTo("success") == 0) {
+                                    order = response.getJSONObject("data");
+                                    handler.completion(true, null);
+                                }
+                                else {
+                                    handler.completion(false, message);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                order = null;
+                                handler.completion(false, "Get Order Information Failed.");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                            handler.completion(false, errorResponse.toString());
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    handler.completion(false, e.toString());
+                }
+                catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    JSONObject getTokenJson(Token token) {
+        JSONObject res = new JSONObject();
+
+        try {
+            res.put("brand", token.getCard().getBrand());
+            res.put("id", token.getId());
+            res.put("expMonth", token.getCard().getExpMonth());
+            res.put("expYear", token.getCard().getExpYear());
+            res.put("expString", String.format("%d/%d", token.getCard().getExpMonth(), token.getCard().getExpYear()));
+            res.put("isLive", token.getLivemode());
+            res.put("last4", token.getCard().getLast4());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return res;
+    }
+
+    JSONObject getEstimateJson() {
+        JSONObject res = new JSONObject();
+
+        try {
+            JSONObject prods = new JSONObject();
+
+            double total = 0.0;
+            int basketCount = 0;
+
+            for (int i = 0; i < products.length(); i++) {
+                JSONObject product = products.getJSONObject(i);
+                JSONObject prodCapsule = new JSONObject();
+
+                int qty = product.getInt("qty");
+                double price = product.getDouble("price");
+
+                total += qty * price;
+                basketCount += qty;
+
+                prodCapsule.put("qty", qty);
+                prodCapsule.put("total", price * qty);
+                prodCapsule.put("formatTotal", String.format("%.2f", price*qty));
+                prodCapsule.put("data", product);
+
+                int productID = product.getInt("bridge_product_id");
+                String key = String.format("%d", productID);
+                prods.put(key, prodCapsule);
+            }
+
+            if (estimateBox != null && estimateBox.getInt("qty") != 0) {
+                int qty = estimateBox.getInt("qty");
+                double price = estimateBox.getDouble("price");
+
+                basketCount += qty;
+                if (total < qty * price) {
+                    total = qty * price;
+                }
+
+                JSONObject estProd = new JSONObject();
+                estProd.put("qty", qty);
+                estProd.put("total", qty * price);
+                estProd.put("data", estimateBox);
+                int productID = estimateBox.getInt("bridge_product_id");
+                String key = String.format("%d", productID);
+                prods.put(key, estProd);
+            }
+
+            res.put("basketCount", basketCount);
+            res.put("formatTotal", String.format("%.2f", total));
+            res.put("total", total);
+            res.put("products", prods);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return res;
     }
 
     public void increaseEstimateBox() {
@@ -234,6 +441,16 @@ public class APIService {
     }
 
     public int getApprovalCount() {
+        if (customer != null) {
+            try {
+                int approval = customer.getInt("approvals");
+                return approval;
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return 0;
+            }
+        }
+
         return 0;
     }
 
