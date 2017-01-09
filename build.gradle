@@ -13,9 +13,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'java'
-
 allprojects {
     repositories {
         jcenter()
