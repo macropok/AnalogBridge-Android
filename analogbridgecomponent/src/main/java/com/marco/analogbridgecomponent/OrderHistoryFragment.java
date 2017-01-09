@@ -96,7 +96,12 @@ public class OrderHistoryFragment extends Fragment {
             viewButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    try {
+                        JSONObject order = orderArray.getJSONObject(position);
+                        AnalogBridgeActivity.currentActivity.showOrderDetailScreen(order, position);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 

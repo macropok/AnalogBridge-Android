@@ -160,7 +160,7 @@
         android:textSize="16dp"
         android:textColor="#000000"
         android:text="Company"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
@@ -170,7 +170,7 @@
         android:textSize="16dp"
         android:textColor="#000000"
         android:text="Address1"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
@@ -180,7 +180,7 @@
         android:textSize="16dp"
         android:textColor="#000000"
         android:text="Address2"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
@@ -190,7 +190,7 @@
         android:textSize="16dp"
         android:textColor="#000000"
         android:text="City, State"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         />
 
 </LinearLayout>

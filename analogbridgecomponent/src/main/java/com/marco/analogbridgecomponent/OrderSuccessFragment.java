@@ -116,9 +116,9 @@ public class OrderSuccessFragment extends Fragment {
 
                 JSONObject ship = new JSONObject();
                 try {
-                    String sub_total = order.getString("total_no_shipping");
-                    String shipping_amount = order.getString("shipping_amount");
-                    String order_total = order.getString("total_amount");
+                    String sub_total = "$" + order.getString("total_no_shipping");
+                    String shipping_amount = "$" + order.getString("shipping_amount");
+                    String order_total = "$" + order.getString("total_amount");
 
                     ship = order.getJSONObject("ship");
                     String em = ship.getString("ship_email");
@@ -172,7 +172,7 @@ public class OrderSuccessFragment extends Fragment {
                     String description = prod.getString("description");
                     int qty = prod.getInt("quantity");
                     String bridge_price = "$" + prod.getString("bridge_price") + " per " + prod.getString("unit_name");
-                    String order_total = prod.getString("total");
+                    String order_total = "$" + prod.getString("total");
 
                     item.setText(description);
                     quantity.setText(String.format("%d", qty));
@@ -197,6 +197,9 @@ public class OrderSuccessFragment extends Fragment {
         OrderSuccessAdapter adapter = new OrderSuccessAdapter(mContext, APIService.sharedService().order);
 
         orderProductList.setAdapter(adapter);
+
+        APIService.sharedService().products = null;
+        AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
 
         return rootView;
     }

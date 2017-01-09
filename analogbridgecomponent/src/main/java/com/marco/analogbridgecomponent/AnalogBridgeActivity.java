@@ -26,6 +26,8 @@ import android.widget.TextView;
 
 import com.mikepenz.actionitembadge.library.ActionItemBadge;
 
+import org.json.JSONObject;
+
 public class AnalogBridgeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     public enum SCREEN {
@@ -202,6 +204,14 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
                 return;
         }
 
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.content_main, fragment).commitAllowingStateLoss();
+    }
+
+    public void showOrderDetailScreen(JSONObject order, int index) {
+        OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
+        fragment.order = order;
+        fragment.index = index;
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main, fragment).commitAllowingStateLoss();
     }

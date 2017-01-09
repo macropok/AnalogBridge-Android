@@ -454,6 +454,99 @@ public class APIService {
         return 0;
     }
 
+    JSONObject getOrder(int orderID) {
+        if (customer == null) return null;
+        try {
+            JSONArray orderArray = customer.getJSONArray("orders");
+            for (int i = 0; i < orderArray.length(); i++) {
+                JSONObject ord = orderArray.getJSONObject(i);
+                if (ord.getInt("order_id") == orderID) {
+                    return ord;
+                }
+            }
+
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    void updateOrder(int orderID, boolean approve) {
+        if (customer == null) return;
+        JSONObject ord = getOrder(orderID);
+
+        if (ord == null) return;
+
+        try {
+            ord.put("rejected", false);
+            ord.put("approved", false);
+            ord.put("pending", false);
+            ord.put("estimate_status", false);
+
+            if (approve == true) {
+                ord.put("estimate_title", "Approved");
+            }
+            else {
+                ord.put("estimate_title", "Rejected");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void approveOrder(final int orderID, final CompletionHandler handler) {
+        String url = getApiURL("customer/orders/") + String.format("%d", orderID) + "/approve-estimate";
+        JSONObject auth = new JSONObject();
+        try {
+            auth.put("publicKey", publicKey);
+            postRequest(url, auth, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    updateOrder(orderID, true);
+                    handler.completion(true, responseString);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    handler.completion(false, responseString);
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+            handler.completion(false, e.toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            handler.completion(false, e.toString());
+        }
+    }
+
+    void rejectOrder(final int orderID, final CompletionHandler handler) {
+        String url = getApiURL("customer/orders/") + String.format("%d", orderID) + "/reject-estimate";
+        JSONObject auth = new JSONObject();
+        try {
+            auth.put("publicKey", publicKey);
+            postRequest(url, auth, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    updateOrder(orderID, false);
+                    handler.completion(true, responseString);
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    handler.completion(false, responseString);
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+            handler.completion(false, e.toString());
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            handler.completion(false, e.toString());
+        }
+    }
+
     private void postRequest(String url, RequestParams params, JsonHttpResponseHandler handler) {
         client.post(url, params, handler);
     }
