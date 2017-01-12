@@ -1,6 +1,6 @@
 # AnalogBridge-Android
 
-This is a library and publishing library for AnalogBridge flow for https://analogbridge.io
+This is a library and publishing library for AnalogBridge flow for https://analogbridge.io/demo
 
 This library has dependencies with several libraries.
 
