@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class OrderSuccessFragment extends Fragment {
 
@@ -92,7 +94,7 @@ public class OrderSuccessFragment extends Fragment {
 
                     order_number.setText(String.format("%d", number));
                     order_date.setText(date);
-                    order_paid.setText(String.format("$ %.2f", paid));
+                    order_paid.setText(String.format("$%,.2f", paid));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -114,49 +116,65 @@ public class OrderSuccessFragment extends Fragment {
                 TextView address2 = (TextView) rowView.findViewById(R.id.order_customer_address2);
                 TextView city = (TextView) rowView.findViewById(R.id.order_customer_city);
 
+                ArrayList<String> validStr = new ArrayList<String>();
+
                 JSONObject ship = new JSONObject();
+                String em = null, phone = null, customer_name = null, add1 = null, ct = null, cmp = null, add2 = null;
                 try {
-                    String sub_total = "$" + order.getString("total_no_shipping");
-                    String shipping_amount = "$" + order.getString("shipping_amount");
-                    String order_total = "$" + order.getString("total_amount");
+                    String sub_total = APIService.sharedService().getCurrencyString(order.getString("total_no_shipping"));
+                    String shipping_amount = APIService.sharedService().getCurrencyString(order.getString("shipping_amount"));
+                    String order_total = APIService.sharedService().getCurrencyString(order.getString("total_amount"));
 
                     ship = order.getJSONObject("ship");
-                    String em = ship.getString("ship_email");
-                    String phone = ship.getString("ship_phone");
-                    String customer_name = ship.getString("ship_first_name") + " " + ship.getString("ship_last_name");
-                    String add1 = ship.getString("ship_address1");
-                    String ct = ship.getString("ship_city") + ", " + ship.getString("ship_state") + " " + ship.getString("ship_zip");
+                    em = ship.getString("ship_email");
+                    phone = ship.getString("ship_phone");
+                    customer_name = ship.getString("ship_first_name") + " " + ship.getString("ship_last_name");
+                    add1 = ship.getString("ship_address1");
+                    ct = ship.getString("ship_city") + ", " + ship.getString("ship_state") + " " + ship.getString("ship_zip");
 
                     subtotal.setText(sub_total);
                     shipping.setText(shipping_amount);
                     total.setText(order_total);
                     email.setText(em);
                     telephone.setText(phone);
-                    name.setText(customer_name);
-                    address1.setText(add1);
-                    city.setText(ct);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 try {
-                    String cmp = ship.getString("ship_company");
-                    if (cmp == null || cmp.length() == 0 || cmp.compareTo("null") == 0) {
-                        company.setVisibility(View.INVISIBLE);
-                    }
+                    cmp = ship.getString("ship_company");
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    company.setVisibility(View.INVISIBLE);
                 }
 
                 try {
-                    String add2 = ship.getString("ship_address2");
-                    if (add2 == null || add2.length() == 0 || add2.compareTo("null") == 0) {
-                        address2.setVisibility(View.INVISIBLE);
-                    }
+                    add2 = ship.getString("ship_address2");
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    address2.setVisibility(View.INVISIBLE);
+                }
+
+                ArrayList<TextView> textViews = new ArrayList<>();
+                textViews.add(name);
+                textViews.add(company);
+                textViews.add(address1);
+                textViews.add(address2);
+                textViews.add(city);
+
+                validStr.add(customer_name); validStr.add(cmp); validStr.add(add1); validStr.add(add2); validStr.add(ct);
+
+                int index = 0;
+                for (int i = 0; i < validStr.size(); i++) {
+                    String str = validStr.get(i);
+                    if (str != null && str.compareTo("null") != 0) {
+                        TextView view = textViews.get(index);
+                        view.setText(str);
+                        index++;
+                    }
+                }
+
+                for (int i = index; i < validStr.size(); i++) {
+                    TextView view = textViews.get(i);
+                    view.setVisibility(View.INVISIBLE);
                 }
             }
             else {
@@ -172,7 +190,7 @@ public class OrderSuccessFragment extends Fragment {
                     String description = prod.getString("description");
                     int qty = prod.getInt("quantity");
                     String bridge_price = "$" + prod.getString("bridge_price") + " per " + prod.getString("unit_name");
-                    String order_total = "$" + prod.getString("total");
+                    String order_total = APIService.sharedService().getCurrencyString(prod.getString("total"));
 
                     item.setText(description);
                     quantity.setText(String.format("%d", qty));
@@ -198,7 +216,26 @@ public class OrderSuccessFragment extends Fragment {
 
         orderProductList.setAdapter(adapter);
 
-        APIService.sharedService().products = null;
+        for (int i = 0; i < APIService.sharedService().products.length(); i++) {
+            try {
+                JSONObject product = APIService.sharedService().products.getJSONObject(i);
+                product.put("qty", 0);
+                product.put("current_qty", 0);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (APIService.sharedService().estimateBox != null) {
+            try {
+                APIService.sharedService().estimateBox.put("qty", 0);
+                APIService.sharedService().estimateBox.put("current_qty", 0);
+            }
+            catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
         AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
 
         return rootView;

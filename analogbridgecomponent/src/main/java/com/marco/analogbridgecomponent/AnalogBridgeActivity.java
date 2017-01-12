@@ -152,6 +152,7 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
         }
         else if (id == R.id.sendbox) {
             APIService.sharedService().increaseEstimateBox();
+            invalidateOptionsMenu();
             showScreen(SCREEN.CART);
         }
 

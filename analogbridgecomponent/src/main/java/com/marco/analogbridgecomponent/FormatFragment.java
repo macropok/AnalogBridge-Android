@@ -3,6 +3,7 @@ package com.marco.analogbridgecomponent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -22,9 +23,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 
 public class FormatFragment extends Fragment {
@@ -168,13 +174,12 @@ public class FormatFragment extends Fragment {
 
             try {
                 String imageURL = product.getString("thumb");
-                DownloadImagesTask task = new DownloadImagesTask();
-                task.imageView = image;
-                task.url = imageURL;
-                task.execute(image);
+                Picasso.with(AnalogBridgeActivity.currentActivity).load(imageURL).into(image);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
 
             return rowView;
         }

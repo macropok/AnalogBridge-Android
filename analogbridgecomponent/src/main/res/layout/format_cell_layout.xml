@@ -45,7 +45,7 @@
         android:id="@+id/product_esitmate"
         android:textColor="#000000"
         android:hint="#Qty"
-        android:textColorHint="#888888"
+        android:textColorHint="#111111"
         android:textSize="20sp"
         android:background="@drawable/edit_text_border"
         android:padding="4dp"

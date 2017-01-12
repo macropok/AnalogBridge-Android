@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class OrderHistoryDetailFragment extends Fragment {
 
@@ -32,11 +34,13 @@ public class OrderHistoryDetailFragment extends Fragment {
         private LayoutInflater mInflater;
         JSONObject order;
         JSONArray productArray;
+        int index;
 
-        public HistoryDetailAdapter(Context context, JSONObject order) {
+        public HistoryDetailAdapter(Context context, JSONObject order, int index) {
             mContext = context;
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             this.order = order;
+            this.index = index;
             try {
                 productArray = this.order.getJSONArray("products");
             } catch (JSONException e) {
@@ -113,10 +117,10 @@ public class OrderHistoryDetailFragment extends Fragment {
 
                         detail_date.setText(date);
                         detail_status.setText(status);
-                        detail_total.setText(String.format("$%.2f", total));
+                        detail_total.setText(String.format("$%,.2f", total));
 
                         detail_quote_status.setText(estimate_title);
-                        detail_estimate_amount.setText("$" + amount);
+                        detail_estimate_amount.setText(APIService.sharedService().getCurrencyString(amount));
 
                         detail_approve_button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -128,9 +132,29 @@ public class OrderHistoryDetailFragment extends Fragment {
                                         @Override
                                         public void completion(boolean bSuccess, String message) {
                                             if (bSuccess == true) {
-
+                                                APIService.sharedService().getCustomer(new CompletionHandler() {
+                                                    @Override
+                                                    public void completion(boolean bSuccess, String message) {
+                                                        if (bSuccess == true) {
+                                                            AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
+                                                            dismissProgressDialog();
+                                                            try {
+                                                                JSONArray orderArray = APIService.sharedService().customer.getJSONArray("orders");
+                                                                order = orderArray.getJSONObject(index);
+                                                                notifyDataSetChanged();
+                                                            } catch (JSONException e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+                                                        else {
+                                                            dismissProgressDialog();
+                                                            Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                });
                                             }
                                             else {
+                                                dismissProgressDialog();
                                                 Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
                                             }
                                         }
@@ -151,9 +175,29 @@ public class OrderHistoryDetailFragment extends Fragment {
                                         @Override
                                         public void completion(boolean bSuccess, String message) {
                                             if (bSuccess == true) {
-
+                                                APIService.sharedService().getCustomer(new CompletionHandler() {
+                                                    @Override
+                                                    public void completion(boolean bSuccess, String message) {
+                                                        if (bSuccess == true) {
+                                                            AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
+                                                            dismissProgressDialog();
+                                                            try {
+                                                                JSONArray orderArray = APIService.sharedService().customer.getJSONArray("orders");
+                                                                order = orderArray.getJSONObject(index);
+                                                                notifyDataSetChanged();
+                                                            } catch (JSONException e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+                                                        else {
+                                                            dismissProgressDialog();
+                                                            Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                });
                                             }
                                             else {
+                                                dismissProgressDialog();
                                                 Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
                                             }
                                         }
@@ -163,6 +207,36 @@ public class OrderHistoryDetailFragment extends Fragment {
                                 }
                             }
                         });
+                    }
+                    else {
+
+                        int approved = order.getInt("approved");
+                        int rejected = order.getInt("rejected");
+
+                        if (approved != 0 || rejected != 0) {
+                            rowView = mInflater.inflate(R.layout.order_detail_approved_layout, parent, false);
+
+                            TextView detail_date = (TextView) rowView.findViewById(R.id.order_detail_date);
+                            TextView detail_status = (TextView) rowView.findViewById(R.id.order_detail_status);
+                            TextView quote_status = (TextView) rowView.findViewById(R.id.order_detail_quote_status);
+                            TextView detail_total = (TextView) rowView.findViewById(R.id.order_detail_total);
+
+                            detail_date.setText(date);
+                            detail_status.setText(status);
+                            detail_total.setText(String.format("$%,.2f", total));
+                            quote_status.setText(order.getString("estimate_title"));
+                        }
+                        else {
+                            rowView = mInflater.inflate(R.layout.order_detail_overview_layout, parent, false);
+
+                            TextView detail_date = (TextView) rowView.findViewById(R.id.order_detail_date);
+                            TextView detail_status = (TextView) rowView.findViewById(R.id.order_detail_status);
+                            TextView detail_total = (TextView) rowView.findViewById(R.id.order_detail_total);
+
+                            detail_date.setText(date);
+                            detail_status.setText(status);
+                            detail_total.setText(String.format("$%,.2f", total));
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -174,7 +248,7 @@ public class OrderHistoryDetailFragment extends Fragment {
 
                     detail_date.setText(date);
                     detail_status.setText(status);
-                    detail_total.setText(String.format("$%.2f", total));
+                    detail_total.setText(String.format("$%,.2f", total));
                 }
             }
             else if (position == count - 1) {
@@ -192,29 +266,36 @@ public class OrderHistoryDetailFragment extends Fragment {
                 TextView city = (TextView) rowView.findViewById(R.id.order_customer_city);
 
                 try {
-                    subtotal.setText("$" + order.getString("total_no_shipping"));
-                    shipping.setText("$" + order.getString("shipping_amount"));
-                    total.setText("$" + order.getString("total_amount"));
+                    subtotal.setText(APIService.sharedService().getCurrencyString(order.getString("total_no_shipping")));
+                    shipping.setText(APIService.sharedService().getCurrencyString(order.getString("shipping_amount")));
+                    total.setText(APIService.sharedService().getCurrencyString(order.getString("total_amount")));
                     email.setText(order.getString("ship_email"));
                     telephone.setText(order.getString("ship_phone"));
-                    name.setText(order.getString("ship_first_name") + " " + order.getString("ship_last_name"));
-                    address1.setText(order.getString("ship_address1"));
-                    city.setText(order.getString("ship_city") + ", " + order.getString("ship_state") + " " + order.getString("ship_zip"));
 
-                    if (order.getString("ship_address2").compareTo("null") == 0) {
-                        address2.setVisibility(View.INVISIBLE);
-                    }
-                    else {
-                        address2.setVisibility(View.VISIBLE);
-                        address2.setText(order.getString("ship_address2"));
+                    ArrayList<String> strArray = new ArrayList<String>();
+                    ArrayList<TextView> textViews = new ArrayList<TextView>();
+
+                    strArray.add(order.getString("ship_first_name") + " " + order.getString("ship_last_name"));
+                    strArray.add(order.getString("ship_company"));
+                    strArray.add(order.getString("ship_address1"));
+                    strArray.add(order.getString("ship_address2"));
+                    strArray.add(order.getString("ship_city") + ", " + order.getString("ship_state") + " " + order.getString("ship_zip"));
+
+                    textViews.add(name); textViews.add(company); textViews.add(address1); textViews.add(address2); textViews.add(city);
+
+                    int index = 0;
+                    for (int i = 0; i < strArray.size(); i++) {
+                        String str = strArray.get(i);
+                        if (str != null && str.compareTo("null") != 0) {
+                            TextView view = textViews.get(index);
+                            view.setText(str);
+                            index++;
+                        }
                     }
 
-                    if (order.getString("ship_company").compareTo("null") == 0) {
-                        company.setVisibility(View.INVISIBLE);
-                    }
-                    else {
-                        company.setVisibility(View.VISIBLE);
-                        company.setText(order.getString("ship_company"));
+                    for (int i = index; i < textViews.size(); i++) {
+                        TextView view = textViews.get(i);
+                        view.setVisibility(View.INVISIBLE);
                     }
 
                 } catch (JSONException e) {
@@ -234,7 +315,7 @@ public class OrderHistoryDetailFragment extends Fragment {
                     item.setText(product.getString("description"));
                     quantity.setText(product.getString("quantity"));
                     price.setText("$" + product.getString("price_per_unit") + " per " + product.get("unit_name"));
-                    total.setText("$" + product.getString("total"));
+                    total.setText(APIService.sharedService().getCurrencyString(order.getString("total")));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -257,7 +338,7 @@ public class OrderHistoryDetailFragment extends Fragment {
                 title.setText(String.format("Order Detail #%d", order_id));
 
                 detailListView = (ListView) rootView.findViewById(R.id.order_detail_list);
-                HistoryDetailAdapter adapter = new HistoryDetailAdapter(AnalogBridgeActivity.currentActivity, order);
+                HistoryDetailAdapter adapter = new HistoryDetailAdapter(AnalogBridgeActivity.currentActivity, order, index);
                 detailListView.setAdapter(adapter);
 
             } catch (JSONException e) {

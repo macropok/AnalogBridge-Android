@@ -72,7 +72,7 @@ public class OrderHistoryFragment extends Fragment {
                 String order_id = "#" + order.getString("order_id");
                 String order_date = order.getString("order_date");
                 String order_status = order.getString("status_name");
-                String order_total = "$" + order.getString("total_amount");
+                String order_total = APIService.sharedService().getCurrencyString(order.getString("total_amount"));
 
                 orderID.setText(order_id);
                 orderDate.setText(order_date);

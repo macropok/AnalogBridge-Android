@@ -1,6 +1,7 @@
 package com.marco.analogbridgecomponent;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.loopj.android.http.*;
@@ -168,11 +169,6 @@ public class APIService {
     }
 
     public void getCustomer(final CompletionHandler handler) {
-        if (customer != null) {
-            handler.completion(true, null);
-            return;
-        }
-
         String url = getApiURL("customer");
         RequestParams params = new RequestParams();
         params.add("publicKey", publicKey);
@@ -289,50 +285,58 @@ public class APIService {
     JSONObject getEstimateJson() {
         JSONObject res = new JSONObject();
 
-        try {
+
             JSONObject prods = new JSONObject();
 
             double total = 0.0;
             int basketCount = 0;
 
             for (int i = 0; i < products.length(); i++) {
-                JSONObject product = products.getJSONObject(i);
-                JSONObject prodCapsule = new JSONObject();
+                try {
+                    JSONObject product = products.getJSONObject(i);
+                    JSONObject prodCapsule = new JSONObject();
 
-                int qty = product.getInt("qty");
-                double price = product.getDouble("price");
+                    int qty = product.getInt("qty");
+                    double price = product.getDouble("price");
 
-                total += qty * price;
-                basketCount += qty;
+                    total += qty * price;
+                    basketCount += qty;
 
-                prodCapsule.put("qty", qty);
-                prodCapsule.put("total", price * qty);
-                prodCapsule.put("formatTotal", String.format("%.2f", price*qty));
-                prodCapsule.put("data", product);
+                    prodCapsule.put("qty", qty);
+                    prodCapsule.put("total", price * qty);
+                    prodCapsule.put("formatTotal", String.format("%.2f", price*qty));
+                    prodCapsule.put("data", product);
 
-                int productID = product.getInt("bridge_product_id");
-                String key = String.format("%d", productID);
-                prods.put(key, prodCapsule);
-            }
-
-            if (estimateBox != null && estimateBox.getInt("qty") != 0) {
-                int qty = estimateBox.getInt("qty");
-                double price = estimateBox.getDouble("price");
-
-                basketCount += qty;
-                if (total < qty * price) {
-                    total = qty * price;
+                    int productID = product.getInt("bridge_product_id");
+                    String key = String.format("%d", productID);
+                    prods.put(key, prodCapsule);
+                }catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-                JSONObject estProd = new JSONObject();
-                estProd.put("qty", qty);
-                estProd.put("total", qty * price);
-                estProd.put("data", estimateBox);
-                int productID = estimateBox.getInt("bridge_product_id");
-                String key = String.format("%d", productID);
-                prods.put(key, estProd);
             }
+        try {
+            if (estimateBox != null && estimateBox.getInt("qty") != 0) {
+                try {
+                    int qty = estimateBox.getInt("qty");
+                    double price = estimateBox.getDouble("price");
 
+                    basketCount += qty;
+                    if (total < qty * price) {
+                        total = qty * price;
+                    }
+
+                    JSONObject estProd = new JSONObject();
+                    estProd.put("qty", qty);
+                    estProd.put("total", qty * price);
+                    estProd.put("data", estimateBox);
+                    int productID = estimateBox.getInt("bridge_product_id");
+                    String key = String.format("%d", productID);
+                    prods.put(key, estProd);
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             res.put("basketCount", basketCount);
             res.put("formatTotal", String.format("%.2f", total));
             res.put("total", total);
@@ -340,10 +344,19 @@ public class APIService {
         }
         catch (JSONException e) {
             e.printStackTrace();
-            return null;
         }
 
         return res;
+    }
+
+    public String getCurrencyString(double price) {
+        String value = String.format("$%,.2f", price);
+        return value;
+    }
+
+    public String getCurrencyString(String priceStr) {
+        double price = Double.parseDouble(priceStr);
+        return getCurrencyString(price);
     }
 
     public void increaseEstimateBox() {
@@ -500,6 +513,7 @@ public class APIService {
         JSONObject auth = new JSONObject();
         try {
             auth.put("publicKey", publicKey);
+            auth.put("customerToken", customerToken);
             postRequest(url, auth, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String responseString) {
@@ -509,6 +523,11 @@ public class APIService {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    if (statusCode == 200) {
+                        updateOrder(orderID, true);
+                        handler.completion(true, responseString);
+                        return;
+                    }
                     handler.completion(false, responseString);
                 }
             });
@@ -526,6 +545,7 @@ public class APIService {
         JSONObject auth = new JSONObject();
         try {
             auth.put("publicKey", publicKey);
+            auth.put("customerToken", customerToken);
             postRequest(url, auth, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String responseString) {
@@ -535,6 +555,11 @@ public class APIService {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    if (statusCode == 200) {
+                        updateOrder(orderID, false);
+                        handler.completion(true, responseString);
+                        return;
+                    }
                     handler.completion(false, responseString);
                 }
             });

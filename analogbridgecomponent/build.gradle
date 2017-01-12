@@ -5,15 +5,15 @@ ext {
     bintrayName = 'analogbridge'
 
     publishedGroupId = 'com.marcopok.analogbridge'
-    libraryName = 'AnalogBridge'
-    artifact = 'analogbridge'
+    libraryName = 'AnalogBridgeComponent'
+    artifact = 'analogbridgecomponent'
 
     libraryDescription = 'AnalogBridge.io for Android version'
 
     siteUrl = 'https://github.com/macropok/AnalogBridge-Android'
     gitUrl = 'https://github.com/macropok/AnalogBridge-Android.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '0.0.5'
 
     developerId = 'marcopok'
     developerName = 'Marco Ramos'
@@ -56,6 +56,7 @@ dependencies {
     compile 'com.mikepenz:actionitembadge:3.3.1@aar'
     compile 'com.mikepenz:iconics-core:2.8.1@aar'
     compile 'com.stripe:stripe-android:2.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
 }
 

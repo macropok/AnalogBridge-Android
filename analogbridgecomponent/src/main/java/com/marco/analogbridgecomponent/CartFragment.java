@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -133,7 +135,7 @@ public class CartFragment extends Fragment {
                 Button checkOut = (Button) rowView.findViewById(R.id.cart_checkout_button);
 
                 double estimate = APIService.sharedService().getEstimate();
-                totalEstimate.setText(String.format("$ %.2f", estimate));
+                totalEstimate.setText(String.format("$ %,.2f", estimate));
 
                 checkOut.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -169,10 +171,7 @@ public class CartFragment extends Fragment {
 
                 try {
                     String imageURL = product.getString("thumb");
-                    DownloadImagesTask task = new DownloadImagesTask();
-                    task.imageView = cartImage;
-                    task.url = imageURL;
-                    task.execute(cartImage);
+                    Picasso.with(AnalogBridgeActivity.currentActivity).load(imageURL).into(cartImage);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

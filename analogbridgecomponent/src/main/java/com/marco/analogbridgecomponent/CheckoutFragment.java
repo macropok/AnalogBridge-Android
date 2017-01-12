@@ -8,6 +8,12 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +32,15 @@ import com.stripe.android.model.Card;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 
 public class CheckoutFragment extends Fragment {
 
@@ -38,6 +48,10 @@ public class CheckoutFragment extends Fragment {
     private ProgressDialog mProgressDialog = null;
 
     JSONObject states;
+    private static final int MAX_CARD_NUMBER_LENGTH = 16;
+    private static final int MAX_CARD_DATE_LENGTH = 5;
+    private static final int MAX_CARD_CVV_LENGTH = 3;
+    String mLastInput ="";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,9 +71,70 @@ public class CheckoutFragment extends Fragment {
         TextView partial_payment = (TextView) rootView.findViewById(R.id.partial_payment);
 
         final EditText card_number = (EditText) rootView.findViewById(R.id.card_number);
+        card_number.setInputType(InputType.TYPE_CLASS_NUMBER);
+        InputFilter[] filterArray = new InputFilter[1];
+        filterArray[0] = new InputFilter.LengthFilter(MAX_CARD_NUMBER_LENGTH);
+        card_number.setFilters(filterArray);
+
         final EditText billing_zip = (EditText) rootView.findViewById(R.id.billing_zip);
         final EditText expiration_date = (EditText) rootView.findViewById(R.id.expiration_date);
+        expiration_date.setInputType(InputType.TYPE_CLASS_NUMBER);
+        filterArray = new InputFilter[1];
+        filterArray[0] = new InputFilter.LengthFilter(MAX_CARD_DATE_LENGTH);
+        expiration_date.setFilters(filterArray);
+        expiration_date.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/yy", Locale.GERMANY);
+                Calendar expiryDateDate = Calendar.getInstance();
+                if (s.length() == 2 && !mLastInput.endsWith("/")) {
+                    int month = Integer.parseInt(input);
+                    if (month <= 12) {
+                        expiration_date.setText(expiration_date.getText().toString() + "/");
+                        expiration_date.setSelection(expiration_date.getText().toString().length());
+                    }
+                }else if (s.length() == 2 && mLastInput.endsWith("/")) {
+                    int month = Integer.parseInt(input);
+                    if (month <= 12) {
+                        expiration_date.setText(expiration_date.getText().toString().substring(0,1));
+                        expiration_date.setSelection(expiration_date.getText().toString().length());
+                    } else {
+                        expiration_date.setText("");
+                        expiration_date.setSelection(expiration_date.getText().toString().length());
+                        Toast.makeText(AnalogBridgeActivity.currentActivity, "Enter a valid month", Toast.LENGTH_LONG).show();
+                    }
+                } else if (s.length() == 1){
+                    int month = Integer.parseInt(input);
+                    if (month > 1) {
+                        expiration_date.setText("0" + expiration_date.getText().toString() + "/");
+                        expiration_date.setSelection(expiration_date.getText().toString().length());
+                    }
+                }
+                else {
+
+                }
+                mLastInput = expiration_date.getText().toString();
+                return;
+            }
+        });
+
         final EditText cvc = (EditText) rootView.findViewById(R.id.cvc);
+        cvc.setInputType(InputType.TYPE_CLASS_NUMBER);
+        filterArray = new InputFilter[1];
+        filterArray[0] = new InputFilter.LengthFilter(MAX_CARD_CVV_LENGTH);
+        cvc.setFilters(filterArray);
 
         final Spinner state = (Spinner) rootView.findViewById(R.id.state);
 
@@ -289,18 +364,32 @@ public class CheckoutFragment extends Fragment {
                 APIService.sharedService().submitOrder(card, new CompletionHandler() {
                     @Override
                     public void completion(boolean bSuccess, String message) {
-                        dismissProgressDialog();
+
                         if (bSuccess == true) {
-                            AnalogBridgeActivity.currentActivity.showScreen(AnalogBridgeActivity.SCREEN.ORDER_SUCCESS);
+                            APIService.sharedService().getCustomer(new CompletionHandler() {
+                                @Override
+                                public void completion(boolean bSuccess, String message) {
+                                    dismissProgressDialog();
+                                    if (bSuccess == true) {
+                                        Log.d("customer", APIService.sharedService().customer.toString());
+                                        AnalogBridgeActivity.currentActivity.showScreen(AnalogBridgeActivity.SCREEN.ORDER_SUCCESS);
+                                    }
+                                    else {
+                                        Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                         }
                         else {
+                            dismissProgressDialog();
                             Toast.makeText(AnalogBridgeActivity.currentActivity, message, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
-
             }
         });
+
+        partial_payment.setText(String.format("$%,.2f", getPartitialPayment()));
 
         return rootView;
     }
@@ -391,5 +480,31 @@ public class CheckoutFragment extends Fragment {
         }
     }
 
+    private double getPartitialPayment() {
+        double value = 0;
+        double price = 0;
 
+        try {
+            price = APIService.sharedService().estimateBox.getDouble("price");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (APIService.sharedService().estimateBox != null) {
+            try {
+                int qty = APIService.sharedService().estimateBox.getInt("qty");
+                if (qty > 0) {
+                    value = qty * price;
+                }
+                else {
+                    value = price;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                value = price;
+            }
+        }
+
+        return value;
+    }
 }
