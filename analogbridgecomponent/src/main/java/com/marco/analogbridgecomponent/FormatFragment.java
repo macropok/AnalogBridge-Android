@@ -149,17 +149,24 @@ public class FormatFragment extends Fragment {
                                         estimate.setText(qtyStr);
                                         AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
                                     }
+                                    estimate.setTag(0);
+                                    notifyDataSetChanged();
                                     dialog.dismiss();
+                                    Toast.makeText(AnalogBridgeActivity.currentActivity, "Items added successfully.", Toast.LENGTH_LONG).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
+                                    estimate.setTag(0);
+                                    notifyDataSetChanged();
                                     dialog.cancel();
+                                    Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items failed. Please try again.", Toast.LENGTH_LONG).show();
                                 }
                             }
                             else {
+                                estimate.setTag(0);
+                                notifyDataSetChanged();
                                 dialog.cancel();
+                                Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items failed. Please try again.", Toast.LENGTH_LONG).show();
                             }
-                            estimate.setTag(0);
-                            notifyDataSetChanged();
                         }
                     }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
@@ -167,6 +174,7 @@ public class FormatFragment extends Fragment {
                             dialog.cancel();
                             estimate.setTag(0);
                             notifyDataSetChanged();
+                            Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items canceled.", Toast.LENGTH_LONG).show();
                         }
                     }).show();
                 }

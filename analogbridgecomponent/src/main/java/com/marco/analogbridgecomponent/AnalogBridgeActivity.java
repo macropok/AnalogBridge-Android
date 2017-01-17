@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.Layout;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -45,6 +46,7 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
     }
 
     public static AnalogBridgeActivity currentActivity;
+    private SCREEN currentScreen = SCREEN.FORMAT_PHOTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,13 +180,15 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
                 ((FormatFragment) fragment).category = SCREEN.FORMAT_FILM;
                 break;
             case HOW_IT_WORKS:
-                fragment = new HowItWorksFragment();
+                //fragment = new HowItWorksFragment();
+                fragment = new HowItWorksPageFragment();
                 break;
             case FEATURES:
                 fragment = new FeaturesFragment();
                 break;
             case FAQS:
-                fragment = new FaqFragment();
+                //fragment = new FaqFragment();
+                fragment = new FaqExpandableFragment();
                 break;
             case CART:
                 fragment = new CartFragment();
@@ -205,6 +209,7 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
                 return;
         }
 
+        currentScreen = screen;
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main, fragment).commitAllowingStateLoss();
     }
@@ -215,6 +220,23 @@ public class AnalogBridgeActivity extends AppCompatActivity implements Navigatio
         fragment.index = index;
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.content_main, fragment).commitAllowingStateLoss();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // do something
+
+            if (currentScreen == SCREEN.FORMAT_PHOTO || currentScreen == SCREEN.FORMAT_FILM || currentScreen == SCREEN.FORMAT_IMAGE) {
+                showScreen(SCREEN.EXIT);
+            }
+            else {
+                showScreen(SCREEN.FORMAT_PHOTO);
+            }
+
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

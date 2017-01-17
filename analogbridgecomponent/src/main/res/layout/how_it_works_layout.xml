@@ -168,7 +168,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Call FedEx for free pick-up or drop-off at a local FedEx Office"
+                    android:text="Call FedEx for free pick-up or drop-off at a local FedEx location"
                     android:textColor="#ffffff"
                     android:layout_marginTop="16dp"
                     android:textAlignment="center"
