@@ -39,6 +39,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.marcopok.analogbridge/analogbridgecomponent/0.0.7/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5c7fd4c863d71fa4fff7b0b910fb6f2b86c654fa">
+        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/pre-dexed/debug/com.marcopok.analogbridge-analogbridgecomponent-0.0.7_d29e3ec2d2edca72093dfd643d3aa6d189d6a754.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
         jumboMode="false"
         optimize="true"
@@ -153,15 +162,6 @@
         revision="25.0.1"
         sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
         <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9_3060d8cb140516e7f3d568344b1fead09529e4ba.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/exploded-aar/com.marcopok.analogbridge/analogbridgecomponent/0.0.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="5c7fd4c863d71fa4fff7b0b910fb6f2b86c654fa">
-        <dex dex="/Users/psihpok/AnalogBridge-Android/app/build/intermediates/pre-dexed/debug/com.marcopok.analogbridge-analogbridgecomponent-0.0.6_4fc05acfeedd3c3c03479c2f20a43e3b337b6b6a.jar" />
     </item>
     <item
         is-multidex="false"
