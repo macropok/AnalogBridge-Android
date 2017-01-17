@@ -16,13 +16,89 @@
         android:id="@+id/how_it_works_title"
         />
 
-    <android.support.v4.view.ViewPager
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
-        android:id="@+id/view_pager"
-        >
+        android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="32dp"
+            android:id="@+id/view_pager"
+            >
+
+        </android.support.v4.view.ViewPager>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/selected_dot"
+                    android:id="@+id/first_dot"
+                    />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/unselected_dot"
+                    android:id="@+id/second_dot"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/unselected_dot"
+                    android:id="@+id/third_dot"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/unselected_dot"
+                    android:id="@+id/forth_dot"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/unselected_dot"
+                    android:id="@+id/fifth_dot"
+                    android:layout_marginLeft="8dp"
+                    />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/unselected_dot"
+                    android:id="@+id/sixth_dot"
+                    android:layout_marginLeft="8dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp">
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
 
 </LinearLayout>

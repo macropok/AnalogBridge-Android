@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class HowItWorksPageFragment extends Fragment {
 
     Context mContext;
     View rootView;
     ViewPager viewPager;
+
+    ArrayList<ImageView> pageIndicators;
 
     public class HowItWorksPageAdapter extends PagerAdapter {
 
@@ -89,6 +93,35 @@ public class HowItWorksPageFragment extends Fragment {
         viewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
         HowItWorksPageAdapter adapter = new HowItWorksPageAdapter(AnalogBridgeActivity.currentActivity);
         viewPager.setAdapter(adapter);
+
+        pageIndicators = new ArrayList<ImageView>();
+
+        ImageView first = (ImageView) rootView.findViewById(R.id.first_dot);
+        ImageView second = (ImageView) rootView.findViewById(R.id.second_dot);
+        ImageView third = (ImageView) rootView.findViewById(R.id.third_dot);
+        ImageView forth = (ImageView) rootView.findViewById(R.id.forth_dot);
+        ImageView fifth = (ImageView) rootView.findViewById(R.id.fifth_dot);
+        ImageView sixth = (ImageView) rootView.findViewById(R.id.sixth_dot);
+
+        pageIndicators.add(first);
+        pageIndicators.add(second);
+        pageIndicators.add(third);
+        pageIndicators.add(forth);
+        pageIndicators.add(fifth);
+        pageIndicators.add(sixth);
+
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < 6; i++) {
+                    ImageView dot = pageIndicators.get(i);
+                    dot.setImageResource(R.drawable.unselected_dot);
+                }
+
+                ImageView selectedDot = pageIndicators.get(position);
+                selectedDot.setImageResource(R.drawable.selected_dot);
+            }
+        });
 
         return rootView;
     }
