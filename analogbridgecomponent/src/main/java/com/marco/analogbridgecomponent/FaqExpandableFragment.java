@@ -5,11 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +44,7 @@ public class FaqExpandableFragment extends Fragment {
 
         @Override
         public Object getChild(int listPosition, int expandedListPosition) {
-            return expandableListDetail.get(expandedListPosition);
+            return expandableListDetail.get(listPosition);
         }
 
         @Override
@@ -96,6 +98,17 @@ public class FaqExpandableFragment extends Fragment {
             TextView listTitleTextView = (TextView) convertView
                     .findViewById(R.id.question);
             listTitleTextView.setText(listTitle);
+
+            ImageView indicator = (ImageView) convertView.findViewById(R.id.indicator);
+            if (isExpanded == false) {
+                //indicator.setImageResource(android.R.drawable.arrow_down_float);
+                indicator.setImageResource(R.drawable.down);
+            }
+            else {
+                //indicator.setImageResource(android.R.drawable.arrow_up_float);
+                indicator.setImageResource(R.drawable.up);
+            }
+
             return convertView;
         }
 
@@ -115,6 +128,10 @@ public class FaqExpandableFragment extends Fragment {
         rootView = inflater.inflate(R.layout.faq_expandable_layout, container, false);
         mContext = AnalogBridgeActivity.currentActivity;
         faqListView = (ExpandableListView) rootView.findViewById(R.id.faq_list);
+
+        Display display = AnalogBridgeActivity.currentActivity.getWindowManager().getDefaultDisplay();
+        //int width = display.getWidth();
+        //faqListView.setIndicatorBounds(width - 50, width);
 
         showProgressDialog();
 

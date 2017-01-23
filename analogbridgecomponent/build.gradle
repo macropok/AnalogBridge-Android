@@ -4,7 +4,7 @@ ext {
     bintrayRepo = 'analogbridge'
     bintrayName = 'analogbridge'
 
-    publishedGroupId = 'com.marcopok.analogbridge'
+    publishedGroupId = 'com.marcorampok.analogbridge'
     libraryName = 'AnalogBridgeComponent'
     artifact = 'analogbridgecomponent'
 
@@ -13,9 +13,9 @@ ext {
     siteUrl = 'https://github.com/macropok/AnalogBridge-Android'
     gitUrl = 'https://github.com/macropok/AnalogBridge-Android.git'
 
-    libraryVersion = '0.0.8'
+    libraryVersion = '0.0.2'
 
-    developerId = 'marcopok'
+    developerId = 'marcorampok'
     developerName = 'Marco Ramos'
     developerEmail = 'marcorampok@gmail.com'
 
@@ -147,7 +147,7 @@ bintray {
         repo = bintrayRepo
         name = bintrayName
         desc = libraryDescription
-        userOrg = 'marcoram'
+        userOrg = 'marcorampok'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = allLicenses

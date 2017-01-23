@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/question"
         android:text="Question"
         android:textColor="#000000"
         android:textSize="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_marginTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textStyle="normal|bold" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerInside"
+        android:id="@+id/indicator"
+        android:src="@drawable/down"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true" />
+
+
+</RelativeLayout>

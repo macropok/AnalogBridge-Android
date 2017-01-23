@@ -114,15 +114,15 @@ public class FormatFragment extends Fragment {
             }
 
             final int finalQuantity = quantity;
-            estimate.setTag(0);
+            estimate.setTag(2001);
             estimate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (hasFocus == false) return;
 
                     int tag = (int) v.getTag();
-                    if (tag != 0) return;
-                    v.setTag(1);
+                    if (tag != 2001) return;
+                    v.setTag(2002);
 
                     final EditText inputView = new EditText(AnalogBridgeActivity.currentActivity);
                     inputView.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -149,22 +149,22 @@ public class FormatFragment extends Fragment {
                                         estimate.setText(qtyStr);
                                         AnalogBridgeActivity.currentActivity.invalidateOptionsMenu();
                                     }
-                                    estimate.setTag(0);
                                     notifyDataSetChanged();
                                     dialog.dismiss();
+                                    estimate.setTag(2001);
                                     Toast.makeText(AnalogBridgeActivity.currentActivity, "Items added successfully.", Toast.LENGTH_LONG).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    estimate.setTag(0);
                                     notifyDataSetChanged();
                                     dialog.cancel();
+                                    estimate.setTag(2001);
                                     Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items failed. Please try again.", Toast.LENGTH_LONG).show();
                                 }
                             }
                             else {
-                                estimate.setTag(0);
                                 notifyDataSetChanged();
                                 dialog.cancel();
+                                estimate.setTag(2001);
                                 Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items failed. Please try again.", Toast.LENGTH_LONG).show();
                             }
                         }
@@ -172,7 +172,7 @@ public class FormatFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-                            estimate.setTag(0);
+                            estimate.setTag(2001);
                             notifyDataSetChanged();
                             Toast.makeText(AnalogBridgeActivity.currentActivity, "Adding items canceled.", Toast.LENGTH_LONG).show();
                         }
